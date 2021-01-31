@@ -1,0 +1,25 @@
+{
+  "name": "xeno-framework",
+  "version": "1.0.0",
+  "description": "A standardized version of CactiveNetwork's framework!",
+  "main": "src/index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CactiveNetwork/Xeno-Framework.git"
+  },
+  "keywords": [
+    "Node.JS"
+  ],
+  "author": "tascord",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CactiveNetwork/Xeno-Framework/issues"
+  },
+  "homepage": "https://github.com/CactiveNetwork/Xeno-Framework#readme"
+}
