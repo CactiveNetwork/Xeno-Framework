@@ -51,7 +51,7 @@ module.exports = class Xeno {
         })
 
         // Commands
-        this.alias = {}, this.commands = {};
+        this.alias = {}, this.commands = {}, this.command_list = {};
         fs.readdirSync(this.absolute_paths.commands)
             .filter(file => file.match(/\.js$/))
             .forEach(file => {
@@ -63,6 +63,17 @@ module.exports = class Xeno {
 
                 if (command.alias) this.alias[file.slice(0, -3)] = command.alias;
                 this.commands[file.slice(0, -3)] = command.run;
+
+                let group = command.group || 'Unsorted';
+                if (!this.command_list[group]) this.command_list[group] = [];
+
+                this.command_list[group].push({
+                    name: file.slice(0, -3),
+                    description: command.description || 'No description provided',
+                    usage: command.usage || 'No usage provided',
+                    example: command.example || 'No example provided',
+                    alias: command.alias || [],
+                })
 
             });
 
