@@ -109,6 +109,8 @@ module.exports = class Xeno {
      */
     run_command = (prefix, string, message) => {
 
+        if(!string.startsWith(prefix)) return;
+
         const args = string.trim().slice(prefix.length).split(/ +/g);
         let command = args.shift().toLowerCase();
 
@@ -120,6 +122,25 @@ module.exports = class Xeno {
         } else {
 
             this.commands[command](args, message, this);
+
+        }
+
+    }
+
+    /**
+     * Returns the command object or null if not found
+     * @param {String} name Name or alias of command
+     * @returns {Object|null}
+     */
+    get_command_by_name = name => {
+
+        for(let section of Object.keys(this.command_list)) {
+
+            for(let command of this.command_list[section]) {
+
+                if(command.name == name || command.alias.indexOf(name) > -1) return command;
+
+            }
 
         }
 
