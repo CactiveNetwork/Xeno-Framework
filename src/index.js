@@ -106,6 +106,7 @@ module.exports = class Xeno {
      * @param {String} prefix The bot's prefix
      * @param {String} string The incoming message content
      * @param {Object} message Message object which is passed to commands
+     * @returns {Boolean} Whether or not a command was exectuted
      */
     run_command = (prefix, string, message) => {
 
@@ -118,12 +119,16 @@ module.exports = class Xeno {
 
             let run = Object.keys(this.alias).find(cmd => this.alias[cmd].indexOf(command) > -1);
             if (run) this.commands[run](args, message, this);
+            return true;
 
         } else {
 
             this.commands[command](args, message, this);
+            return true;
 
         }
+        
+        return false;
 
     }
 
