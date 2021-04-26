@@ -119,7 +119,7 @@ module.exports = class Xeno {
 
             let run = Object.keys(this.alias).find(cmd => this.alias[cmd].indexOf(command) > -1);
             if (run) this.commands[run](args, message, this);
-            return true;
+            return false;
 
         } else {
 
@@ -128,8 +128,6 @@ module.exports = class Xeno {
 
         }
         
-        return false;
-
     }
 
     /**
